@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <base target="_top">
+  </head>
+  <body>
+    <h2>Self-Build Risk Analysis</h2>
+    <form id="riskForm">
+      <label for="cost">Cost:</label>
+      <select id="cost">
+        <option value="1">Less than $100,000</option>
+        <option value="2">$100,000 - $200,000</option>
+        <option value="3">$200,000 - $300,000</option>
+        <option value="4">$300,000 - $400,000</option>
+        <option value="5">More than $400,000</option>
+      </select><br><br>
+      
+      <label for="time">Time:</label>
+      <select id="time">
+        <option value="1">1 month</option>
+        <option value="2">2 months</option>
+        <option value="3">3 months</option>
+        <option value="4">4 months</option>
+        <option value="5">5+ months</option>
+      </select><br><br>
+      
+      <label for="quality">Quality:</label>
+      <select id="quality">
+        <option value="1">Poor</option>
+        <option value="2">Below Average</option>
+        <option value="3">Average</option>
+        <option value="4">Good</option>
+        <option value="5">Excellent</option>
+      </select><br><br>
+      
+      <label for="supplyChain">Supply Chain:</label>
+      <select id="supplyChain">
+        <option value="1">Very Unstable</option>
+        <option value="2">Unstable</option>
+        <option value="3">Moderate</option>
+        <option value="4">Stable</option>
+        <option value="5">Very Stable</option>
+      </select><br><br>
+      
+      <label for="scalability">Scalability:</label>
+      <select id="scalability">
+        <option value="1">Very Low</option>
+        <option value="2">Low</option>
+        <option value="3">Medium</option>
+        <option value="4">High</option>
+        <option value="5">Very High</option>
+      </select><br><br>
+      
+      <label for="expertise">Expertise:</label>
+      <select id="expertise">
+        <option value="1">Very Low</option>
+        <option value="2">Low</option>
+        <option value="3">Medium</option>
+        <option value="4">High</option>
+        <option value="5">Very High</option>
+      </select><br><br>
+      
+      <label for="marketRisk">Market Risk:</label>
+      <select id="marketRisk">
+        <option value="1">Very Low</option>
+        <option value="2">Low</option>
+        <option value="3">Medium</option>
+        <option value="4">High</option>
+        <option value="5">Very High</option>
+      </select><br><br>
+      
+      <label for="technologyRisk">Technology Risk:</label>
+      <select id="technologyRisk">
+        <option value="1">Very Low</option>
+        <option value="2">Low</option>
+        <option value="3">Medium</option>
+        <option value="4">High</option>
+        <option value="5">Very High</option>
+      </select><br><br>
+
+      <input type="button" value="Submit Risk Data" onclick="submitRiskData()">
+    </form>
+
+    <script>
+      function submitRiskData() {
+        var formData = {
+          cost: document.getElementById('cost').value,
+          time: document.getElementById('time').value,
+          quality: document.getElementById('quality').value,
+          supplyChain: document.getElementById('supplyChain').value,
+          scalability: document.getElementById('scalability').value,
+          expertise: document.getElementById('expertise').value,
+          marketRisk: document.getElementById('marketRisk').value,
+          technologyRisk: document.getElementById('technologyRisk').value
+        };
+        
+        google.script.run.processRiskData(formData);
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <base target="_top">
+  </head>
+  <body>
+    <h3>Enter Amounts</h3>
+    <p>Select a range in the sheet and enter the amounts in the cells. Then click "Calculate Sum" to get the total sum of the selected range.</p>
+    <label for="displayCell">Enter cell to display result:</label>
+    <input type="text" id="displayCell" placeholder="e.g., E2"><br><br>
+    <button id="calculateSumButton">Calculate Sum</button>
+    <div id="result"></div>
+    
+    <script>
+      document.getElementById('calculateSumButton').addEventListener('click', () => {
+        const displayCell = document.getElementById('displayCell').value;
+        const activeRange = google.script.run.withSuccessHandler((range) => {
+          google.script.run.withSuccessHandler((sum) => {
+            document.getElementById('result').innerHTML = 'Total Sum: ' + sum;
+          }).calculateSumAndDisplay(range, displayCell);
+        }).getActiveRange();
+      });
+    </script>
+  </body>
+</html>
